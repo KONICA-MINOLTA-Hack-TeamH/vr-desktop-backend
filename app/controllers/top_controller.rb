@@ -1,6 +1,13 @@
 class TopController < ApplicationController
   def index
   end
+
+  def fetch_gmail
+    gmail = Gmail.new("h.akaishi.dev@gmail.com", "19940927")
+    get_mail = gmail.inbox.emails(:all).last
+    render 'index'
+    return get_mail
+  end
   
   def get_next_send_mail
     #Ringからのリクエストを受けて、最新のメールを取得する
@@ -46,13 +53,6 @@ class TopController < ApplicationController
     else
       render :text => "false"
     end
-  end
-
-  def feach_gmail
-    format.html{ render :nothing => true }
-    gmail = Gmail.new("h.akaishi.dev@gmail.com", "19940927")
-
-    puts gmail.inbox.count
   end
   
 end  
