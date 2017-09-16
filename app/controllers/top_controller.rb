@@ -11,9 +11,12 @@ class TopController < ApplicationController
   def send_mail_for_unity
     #session[:next_send_mail]を取得してRender
     #session[:sended_for_unity]=trueにする
-#    json = {
-#      :text => session[:latest_email]
-#    }
+    #    json = {
+    #      :text => session[:latest_email]
+    #    }
+  end
+
+  def send_email_for_unity
     json = {
       :text => "test"
     }
@@ -25,5 +28,13 @@ class TopController < ApplicationController
     #session[:next_send_mail]と、最新email情報が一致するかどうか調べる
 
   end
+
+  def feach_gmail
+    format.html{ render :nothing => true }
+    gmail = Gmail.new("h.akaishi.dev@gmail.com", "19940927")
+
+    puts gmail.inbox.count
+  end
+  
 end  
 
