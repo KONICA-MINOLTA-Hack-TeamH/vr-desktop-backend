@@ -24,4 +24,4 @@ config/secrets.yml
 /yarn-error.log
 
 .byebug_history
-/nbproject/private/
+/nbproject/
