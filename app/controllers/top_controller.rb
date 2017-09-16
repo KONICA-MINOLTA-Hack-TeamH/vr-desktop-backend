@@ -4,9 +4,16 @@ class TopController < ApplicationController
 
   def fetch_gmail
     gmail = Gmail.new("h.akaishi.dev@gmail.com", "19940927")
-    get_mail = gmail.inbox.emails(:all).last
-    render 'index'
-    return get_mail
+    mail = gmail.inbox.emails(:all).last
+    mail_hash = {}
+    mail_hash[:subject] = mail.subject
+    mail_hash[:date] = mail.date
+    mail_hash[:from] = mail.from
+    mail_hash[:to] = mail.to
+    mail_hash[:text] = mail.text_part.decoded
+    mail_hash[:subject] = mail.subject
+#    return mail_hash.to_json
+    render :json => mail_hash.to_json
   end
   
   def get_next_send_mail
