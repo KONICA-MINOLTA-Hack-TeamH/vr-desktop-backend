@@ -22,17 +22,20 @@ class TopController < ApplicationController
       req["Authorization"] = "Bearer ya29.GlvJBKk640NHpwifPH0n4F-NBZcUyumNcUlzt1ChzystF-y3g2kTVLrvo8yGPnKEAX7TgK0trrset66iNC5chQG3jVsu0IB-Q1YJY7vje2GFeuGxU162Crm2jvsK"
       res = http.request(req)
 
-      body = JSON.parse(res.body)["payload"]["parts"].map do |parts|
-        parts['body']['data']
-      end.join('')
-      body = Base64.decode64(body).encode('UTF-8', 'ASCII-8BIT', :invalid => :replace, :undef => :replace)
+      body = JSON.parse(res.body)["payload"]["parts"][0]['body']['data']
+      body = Base64.urlsafe_decode64(body).force_encoding('UTF-8')
       response = {
         subject: JSON.parse(res.body)["payload"]['headers'].select{|h|h['name'] == 'Subject'}[0]['value'],
-        body: body,
+        text: body,
+        subject: "sample subject",
+        date: "2017 - 9 -17",
+        from: "sender@gmail.com",
+        to: "myaddress@gmail.com",
       }
       # render :json => 
       render :json => response
-    rescue
+    rescue => e
+      puts e
       # mail = gmail.inbox.emails(:all).last
       mail_hash = {}
       mail_hash[:subject] = "sample subject"
