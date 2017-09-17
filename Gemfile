@@ -58,4 +58,5 @@ gem 'mail'
 gem 'mime'
 gem 'shared-mime-info'
 gem 'ruby-gmail'
+gem 'url_safe_base64'
 
