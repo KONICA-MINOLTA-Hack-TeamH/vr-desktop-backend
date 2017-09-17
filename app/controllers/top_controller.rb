@@ -1,3 +1,5 @@
+require 'net/https'
+
 class TopController < ApplicationController
   def index
   end
