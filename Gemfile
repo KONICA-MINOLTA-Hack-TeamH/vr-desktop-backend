@@ -54,7 +54,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'mail'
+gem 'mime'
+gem 'shared-mime-info'
 gem 'ruby-gmail'
-
-gem 'websocket-rails'
 

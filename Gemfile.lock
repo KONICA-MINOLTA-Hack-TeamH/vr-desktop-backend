@@ -218,6 +218,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  mail
+  mime
   mysql2
   pry-rails
   puma (~> 3.7)
@@ -225,6 +227,7 @@ DEPENDENCIES
   ruby-gmail
   sass-rails (~> 5.0)
   selenium-webdriver
+  shared-mime-info
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
